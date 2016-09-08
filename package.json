@@ -5,6 +5,24 @@
   "description": "A starter project for AngularJS",
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.1",
+    "@angular/compiler": "2.0.0-rc.1",
+    "@angular/core": "2.0.0-rc.1",
+    "@angular/http": "2.0.0-rc.1",
+    "@angular/platform-browser": "2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
+    "@angular/router": "2.0.0-rc.1",
+    "@angular/router-deprecated": "2.0.0-rc.1",
+    "@angular/upgrade": "2.0.0-rc.1",
+    "systemjs": "0.19.22",
+    "es7-reflect-metadata": "^1.6.0",
+    "es6-promise": "^3.1.2",
+    "es6-promise-loader": "^1.0.1",
+    "es6-shim": "^0.35.0",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12"
+  },
   "devDependencies": {
     "bower": "^1.7.7",
     "http-server": "^0.9.0",
@@ -14,10 +32,18 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.1",
-    "protractor": "^3.2.2"
+    "protractor": "^3.2.2",
+    "typescript": "~1.8.9",
+    "typings": "^1.0.4"
   },
   "scripts": {
     "postinstall": "bower install",
+
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install",
 
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",

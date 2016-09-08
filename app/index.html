@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,7 @@
   <![endif]-->
 
   <div ng-view></div>
+  <ng-book></ng-book>
 
   <div>Angular seed app: v<span app-version></span></div>
 
@@ -33,11 +34,64 @@
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+  <!--SystemJS module loader-->
+  <script>
+      System.paths["@angular/*"] = "./node_modules/@angular/*";
+      System.paths["rxjs/*"] = "./node_modules/rxjs/*";
+      System.config({packages: {'app': {format: 'register',defaultExtension: 'js'}}});
+      System.config({
+          packages: {
+            map: {
+              'rxjs': './node_modules/rxjs',
+              '@angular': './node_modules/@angular',
+              'app': './app'
+            },
+            'ng2.component':{
+                'ng2.component': 'ng2.component.js',
+                defaultExtension: 'js'
+            },
+            '@angular/core': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            '@angular/compiler': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            '@angular/common': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            '@angular/platform-browser': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            '@angular/platform-browser-dynamic': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            '@angular/upgrade': {
+              main: 'index.js',
+              defaultExtension: 'js'
+            },
+            'rxjs': {
+              defaultExtension: 'js'
+            }
+          }
+      });
+      System.import('boot.js')
+          .then(null, console.error.bind(console));
+  </script>
 </body>
 </html>
